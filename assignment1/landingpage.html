@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Landing Page</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+        }
+
+        header {
+            background-color: #363636;
+            color: #ebeae6;
+
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        header div {
+            padding: 20px;
+        }
+
+        .frame-content {
+            background-color: #ebeae6;
+            width: 100%;
+
+        }
+        .frame-content h1{
+            text-align: center;
+        }
+
+        .content {
+            background-color: #ebeae6;
+            width: 100%;
+            display: flex;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #011826;
+            color: #ebeae6;
+            margin-top: auto;
+            display: block;
+            text-align: center;
+        }
+
+        img {
+            border: 1px solid;
+            max-height:800px;
+            border-radius: 10px;
+            margin: auto;
+        }
+
+        #left {
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            height: 100%;
+        }
+
+        #right {
+            margin: 5% auto;
+            display: block;
+            width: 50%;
+            text-align: center;
+
+        }
+        #right p{
+            font-weight: bold;
+            font-size: x-large;
+            padding-top: 30px;
+        }
+
+        button{
+            background-color: #f88e37;
+            color: #ffffff;
+            border: none;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+            border-radius: 10px;
+        }
+        footer p {
+            margin-top: 40px;
+        }
+        footer button {
+            padding-left: 60px;
+            padding-right: 60px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div>The book series</div>
+    <div>Testimonials</div>
+    <div>The Author</div>
+    <div>Free resources</div>
+</header>
+<div class="frame-content">
+    <h1>You dont know JavaScript</h1>
+    <div class="content">
+        <div id="left">
+            <img src="https://kaul.inf.h-brs.de/wem/assets/img/landing-img.png">
+        </div>
+        <div id="right">
+            <p>Don't just drift through Javascript</p>
+            <p>Understand how Javascript works</p>
+            <p>Start your journey through the bumpy side of JavaScript</p>
+            <button>ORDER YOUR COPY NOW</button>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>The first ebook in the book series is absolutely free.</p>
+    <button>FIND OUT MORE ABOUT THIS OFFER</button>
+</footer>
+</body>
+</html>
