@@ -118,10 +118,71 @@ function once(f){
                 executed = true;
                 return f.apply(this, arguments);
             }
-            return Error("Not allowed")
+            throw new Error("Not allowed")
         }
 }
 
 var once_add = once(add);
 x = once_add(3,4)
-x = once_add(3,4)
+//x = once_add(3,4)
+
+
+counter = counterf(10);
+console.log(counter.inc()) // 11
+console.log(counter.dec()) // 10
+
+function counterf(a){
+    return {
+        inc: function(){
+            a += 1;
+            return a;
+        },
+        dec: function(){
+            a -= 1;
+            return a;
+        }
+    }
+}
+
+
+counter = counterf(10);
+
+
+function revocable(x) {
+    return{
+        func:x,
+        invoke: function (...args){
+            this.func(...args)
+        },
+        revoke: function (){
+            this.func = null
+        }
+
+    }
+}
+
+temp = revocable(console.log);
+temp.invoke("lulu");
+//temp.revoke();
+//temp.invoke(8); // Fehlerabbruch!
+
+
+function wrapper() {
+    var array = [];
+
+    return {
+        get: function get(i) {
+            return array[i];
+        },
+        store: function store(i, v) {
+            array[i] = v;
+        },
+        append: function append(v) {
+            array.push(v);
+        }
+    };
+}
+
+arr = wrapper()
+arr.append("123")
+temp.invoke(arr.get(0))
