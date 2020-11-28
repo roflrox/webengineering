@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rednerliste</title>
+</head>
+<body>
+<h1>Rednerliste</h1>
+<label for="additem">Neuer Redner:</label>
+<input type="text" class="form" id="additem"/>
+<button id="btn">Add item</button>
+<ul id="items"></ul>
+<script>
+    var tag = document.createElement("script");
+    tag.src = "./rednerlist.js";
+    document.getElementsByTagName("body")[0].appendChild(tag);
+</script>
+</body>
+</html>
