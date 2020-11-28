@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shoppinglist</title>
+</head>
+<body>
+<h1>Einkaufsliste</h1>
+<label for="additem">Enter a new item:</label>
+<input type="text" class="form" id="additem"/>
+<button id="btn">Add item</button>
+<ul id="items"></ul>
+<script>
+    var tag = document.createElement("script");
+    tag.src = "./shoppinglist.js";
+    document.getElementsByTagName("body")[0].appendChild(tag);
+</script>
+</body>
+</html>
