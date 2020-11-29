@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        min-width: 30px;
+    }
+</style>
+<body>
+<h1>Table</h1>
+<table>
+    <tr>
+        <td>a =</td>
+        <td id="inputa" oninput="update()" contenteditable="true"></td>
+    </tr>
+    <tr>
+        <td>b =</td>
+        <td id="inputb" oninput="update()" contenteditable="true"></td>
+    </tr>
+    <tr>
+        <td>Sum =</td>
+        <td id="output" contenteditable="true" data-formula="=SUM(A2;B2)"></td>
+    </tr>
+</table>
+<script>
+    var tag = document.createElement("script");
+    tag.src = "./excel.js";
+    document.getElementsByTagName("body")[0].appendChild(tag);
+</script>
+</body>
+</html>
