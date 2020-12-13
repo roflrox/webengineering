@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    async function getA() {
+        try {
+            var response = await fetch('http://localhost:8080/a.txt',{
+                mode: 'cors'
+            })
+
+
+            if (response.ok) {
+                let data = await response.text();
+                console.log(data)
+            } else {
+
+            }
+        } catch (e) {
+            console.log("Not found")
+        }
+    }
+
+    getA()
+
+
+</script>
+
+</body>
+</html>
