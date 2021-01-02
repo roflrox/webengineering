@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    customElements.define('excel-table', class extends HTMLElement {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            this.innerHTML=`
+            <h1>Table</h1>
+<table>
+    <tr>
+        <td>a =</td>
+        <td id="inputa" oninput="update()" contenteditable="true"></td>
+    </tr>
+    <tr>
+        <td>b =</td>
+        <td id="inputb" oninput="update()" contenteditable="true"></td>
+    </tr>
+    <tr>
+        <td>Sum =</td>
+        <td id="output" contenteditable="true" data-formula="=SUM(A2;B2)"></td>
+    </tr>
+</table>
+`
+        }
+    })
+</script>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        min-width: 30px;
+    }
+</style>
+<body>
+<excel-table></excel-table>
+<script>
+    document.getElementById("output").addEventListener("focus", function () {
+        console.log("onfocus")
+        content = document.getElementById("output").textContent
+        document.getElementById("output").textContent = document.getElementById("output").dataset.formula
+
+    })
+
+    document.getElementById("output").addEventListener("blur", function () {
+        console.log("onblur")
+        document.getElementById("output").dataset.formula = document.getElementById("output").textContent
+        document.getElementById("output").textContent = content
+
+
+    })
+
+    function update() {
+        a = document.getElementById("inputa").textContent
+        b = document.getElementById("inputb").textContent
+        document.getElementById("output").textContent = parseInt(a) + parseInt(b)
+    }
+</script>
+</body>
+</html>
