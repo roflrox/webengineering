@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rednerliste</title>
+
+</head>
+<body>
+<script>
+    customElements.define('redner-list', class extends HTMLElement {
+
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            this.innerHTML = `
+                <h1>Rednerliste</h1>
+                <label htmlFor="additem">Neuer Redner:</label>
+                <input type="text" className="form" id="additem"/>
+                <button id="btn">Add item</button>
+                <ul id="items"></ul>
+                `
+
+            let btn = document.getElementById('btn');
+
+
+
+            btn.addEventListener("click", event => {
+                let items = document.getElementById('items').innerHTML
+                let inputval = document.getElementById('additem').value
+                items = items + "<li>" + inputval + this.addbutton(inputval) + "</li>"
+                document.getElementById('items').innerHTML = items
+                document.getElementById('additem').value = ""
+            })
+
+
+
+        }
+
+        addbutton(inputval) {
+            return `<div id=${inputval}></div><button onclick="startTimer(${inputval})">Start</button>`
+        }
+
+
+
+    })
+    function newTimer(id) {
+        let time = document.getElementById(id).innerHTML
+        const [hour, minute, second] = time.split(':');
+        const d = new Date();
+        d.setHours(parseInt(hour), parseInt(minute), parseInt(second), 0)
+        d.setSeconds(d.getSeconds() + 1)
+        document.getElementById(id).innerHTML = d.toLocaleTimeString()
+
+    }
+
+    let timers = new Map()
+
+    function startTimer(id) {
+        const btn = document.getElementById(id).nextSibling;
+        let timer
+        if (btn.textContent === "Start") {
+            if (!timers.has(id)) {
+                var d = new Date();
+                d.setHours(0, 0, 0, 0);
+                document.getElementById(id).innerHTML = d.toLocaleTimeString();
+                timer = setInterval(newTimer, 1000, id);
+                timers.set(id, timer)
+
+            }else{
+                timer=setInterval(newTimer,1000,id)
+                timers.set(id, timer)
+            }
+            timers.forEach((value,key,map) => {
+                    if(key !== id){
+                        clearInterval(value)
+                        var btn1 = document.getElementById(key).nextSibling
+                        btn1.textContent = "Start"
+                    }
+                }
+            )
+            btn.textContent = "Stop"
+        } else {
+            btn.textContent = "Start"
+            clearInterval(timers.get(id))
+        }
+    }
+
+</script>
+<redner-list></redner-list>
+</body>
+</html>
