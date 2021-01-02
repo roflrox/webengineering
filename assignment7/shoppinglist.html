@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shoppinglist</title>
+    <script>
+        customElements.define('shopping-list', class extends HTMLElement {
+
+            connectedCallback() {
+                this.innerHTML = `
+                <h1>Einkaufsliste</h1>
+                <label for="additem">Enter a new item:</label>
+    <input type="text" class="form" id="additem"/>
+    <button id="btn">Add item</button>
+    <ul id="items"></ul>
+`
+                var btn = document.getElementById('btn');
+
+                btn.addEventListener("click", event => {
+                    var items = document.getElementById('items').innerHTML
+                    var inputval = document.getElementById('additem').value
+                    items = items + "<li>" + inputval + "<button onclick='this.parentNode.parentNode.removeChild(this.parentNode)'>Delete</button></li>"
+                    document.getElementById('items').innerHTML = items
+                    document.getElementById('additem').value = ""
+                })
+            }
+        })
+
+    </script>
+</head>
+<body>
+<shopping-list></shopping-list>
+</body>
+</html>
