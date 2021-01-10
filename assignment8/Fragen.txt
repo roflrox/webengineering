@@ -1,0 +1,27 @@
+Beschreiben Sie hier Ihr Vorgehen, Ihre Libraries und Tools, die Sie einsetzen:
+
+Ich habe das Projekt mit Hilfe des PWA-Starter Kits angelegt https://pwa-starter-kit.polymer-project.org/
+
+Libraries:
+   - polymer
+   - webcomponents
+   - lit-element
+
+
+Dev-Tools:
+prpl-server
+
+
+Beschreiben Sie hier Ihre Probleme und Lösungskonzepte:
+
+
+Zunächst habe ich versucht die PWA mit dem es-dev-server für Testzwecke auszuliefern, das hat aber nicht gut funktioniert.
+Da der es-dev-server keine möglichkeit bietet SSL-Zertifikate zu hinterlegen und somit kein https funktioniert.
+Deswegen habe ich auf den prpl-server geschwenkt. Der prpl server unterstützt die Verwendung von https.
+
+Geben Sie hier Ihre Lighthouse-Messergebnisse für Ihre PWA ein:
+
+Performance 89
+Accessibility 100
+Best Practices 100
+SEO 100
