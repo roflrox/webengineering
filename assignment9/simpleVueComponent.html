@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+   <my-hello></my-hello>
+   <my-hello></my-hello>
+   <my-hello></my-hello>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    Vue.component('my-hello',{
+        template: '<div><button @click="world">Click ME</button>'
+            +'<h1>Hello {{name}}!</h1></div>',
+        data : function () {
+            return {name: 'Me'}
+        },
+        methods: {
+            world: function () {this.name = 'World'}
+        }
+    })
+    new Vue({
+        el: '#app'
+    });
+</script>
+
+</body>
+</html>

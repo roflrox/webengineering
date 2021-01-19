@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model="name">
+    <p>{{ name }}</p>
+    <input type="text" v-bind:value="name1">
+    <p>{{ name1 }}</p>
+    <input type="text" v-bind:value="name2" v-on:input="name2=$event.target.value">
+    <p>{{ name2 }}</p>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'Anna',
+            name1: 'does not update',
+            name2: 'Günther'
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <h1>1. Thema {{title}}</h1>
+    <h2>2. Unterthema {{title}}</h2>
+    <p>Paragraph über {{title}}</p>
+    <button @click="world">Change Title</button>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Me'
+        },
+        methods: {
+            world: function(){ this.title = 'World' }
+        }
+    });
+</script>
+
+</body>
+</html>
