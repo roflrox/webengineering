@@ -2,33 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Concat</title>
 </head>
 <body>
-
+<h2>Concat with Map Reduce: </h2>
+<div id="field"></div>
 <script>
-    async function getA() {
-        try {
-            var response = await fetch('http://localhost:8080/a.txt',{
-                mode: 'cors'
+    const files = ['A.txt', 'B.txt'];
+    Promise.all(
+        files.map(file =>
+            fetch(file).then(function (result) {
+                return result.text();
             })
+        )
+    ).then(output => {
+        const inputA = output[0].split("\n");
+        const inputB = output[1].split("\n");
 
-
-            if (response.ok) {
-                let data = await response.text();
-                console.log(data)
-            } else {
-
-            }
-        } catch (e) {
-            console.log("Not found")
-        }
-    }
-
-    getA()
-
-
+        document.getElementById("field").innerHTML = inputA.reduce((both, left, i) => {
+            both += left + ' | ' + (inputB[i] || '') + '<br>';
+            return both;
+        }, '');
+    });
 </script>
-
 </body>
 </html>

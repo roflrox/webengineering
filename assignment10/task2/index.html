@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    const isPrime = num => {
+        for(let i = 2, s = Math.sqrt(num); i <= s; i++)
+            if(num % i === 0) return false;
+        return num > 1;
+    }
+
+    const calcPrime = () => {
+        const start=Date.now()
+        numPrimes = 0
+        for (let i = 0; i <100000; i++) {
+            if(isPrime(i)){
+                numPrimes++
+            }
+
+        }
+
+        document.getElementById("result").innerHTML="Primes "+numPrimes
+        runtime = Date.now()-start
+        document.getElementById("runtime").innerHTML="Runtime:"+ runtime+" ms"
+
+    }
+
+</script>
+<button onclick="calcPrime()">Start JS</button>
+<div id="state"></div>
+<div id="result"></div>
+<div id="runtime"></div>
+</body>
+</html>
