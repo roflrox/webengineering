@@ -8,7 +8,7 @@
 <h2>Concat with Map Reduce: </h2>
 <div id="field"></div>
 <script>
-    const files = ['A.txt', 'B.txt'];
+    function mergeFiles(files){
     Promise.all(
         files.map(file =>
             fetch(file).then(function (result) {
@@ -24,6 +24,8 @@
             return both;
         }, '');
     });
+    }
+    mergeFiles(['A.txt', 'B.txt'])
 </script>
 </body>
 </html>
