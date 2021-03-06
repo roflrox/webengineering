@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Concat</title>
+</head>
+<body>
+<h2>Concat async await: </h2>
+<div id="field"></div>
+<script>
+    function mergeFiles(files) {
+
+        (async _ => {
+            const output = await Promise.all(files.map(async file =>
+                (await fetch(file)).text()
+            ));
+
+            const inputA = output[0].split("\n");
+            const inputB = output[1].split("\n");
+
+            document.getElementById("field").innerHTML = inputA.reduce((both, left, i) => {
+                both += left + ' | ' + (inputB[i] || '') + '<br>';
+                return both;
+            }, '');
+        })();
+
+}
+    mergeFiles(['A.txt', 'B.txt'])
+</script>
+</body>
+</html>
