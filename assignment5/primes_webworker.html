@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excercise 5.3: Website - Primzahlberechnung</title>
+</head>
+<style>
+    div {
+        width: 100%;
+        height: 4em;
+    }
+    #bar {
+        background-color: lightgrey;
+    }
+    #progress {
+        background-color: #a6e22e;
+    }
+</style>
+<body>
+<h1>Primzahlberechnung</h1>
+<div id="bar">
+    <div id="progress"></div>
+</div>
+<div id="currentNumber"></div>
+</body>
+<script>
+    const progress = document.getElementById("progress");
+    let stepWise = 1;
+    let currentWidth = 0;
+    let animation = requestAnimationFrame( step );
+
+    function step(){
+        currentWidth += stepWise;
+        if ( currentWidth === 100 ) {
+            stepWise = -1;
+        }
+        if(currentWidth === 0){
+            stepWise = 1;
+        }
+        progress.style.width = currentWidth + '%';
+        animation = requestAnimationFrame( step );
+        worker.postMessage("")
+    }
+
+
+
+    const outputDiv = document.getElementById("currentNumber");
+
+
+    const worker = new Worker("./primes_webworker.js")
+    worker.addEventListener('message',function (output){
+
+        if(output.data){
+            outputDiv.innerHTML = output.data.toString();
+        }
+    })
+
+
+
+
+</script>
+</html>
