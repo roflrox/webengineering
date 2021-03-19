@@ -17,6 +17,8 @@ import NavLeft from "@/components/NavLeft";
 import NavRight from "@/components/NavRight";
 
 
+
+
 export default {
   name: 'Home',
   components: {
@@ -25,6 +27,9 @@ export default {
     NavContent,
     Footer,
     Header,
+  },
+  mounted() {
+    this.$store.dispatch("init");
   }
 }
 </script>

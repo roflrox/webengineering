@@ -2,13 +2,47 @@
   <header id="Navigatorheader">
     <h2 id="Navigatorh2">Header</h2>
     <ul class="Navigatorul" id="Navigatorulheader">
+      <button v-for="item in items"  v-on:click="clicked">{{item}}</button>
     </ul>
   </header>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
-name: "Header.vue"
+  name: "Header.vue",
+  data(){
+    return {items:[]}
+  },
+
+
+
+  computed: mapState(['content']),
+  watch: {
+    content(newValue, oldValue) {
+      console.log(newValue)
+
+
+      let result = []
+      Object.keys(newValue).forEach(function (key){
+        result.push(key)
+      })
+     this.updateItems(result)
+      return result
+    }
+  },
+  methods:{
+    updateItems(input){
+      this.items = input
+      console.log(this.items)
+    },
+    clicked(item) {
+      console.log(item.target.textContent);
+      this.$store.dispatch('updateCurrent',item.target.textContent)
+
+    }
+  }
 }
 </script>
 
@@ -17,6 +51,7 @@ name: "Header.vue"
   color: white;
   margin-top: 0;
 }
+
 #Navigatorheader {
   background-color: #C34C51;
   border-top-left-radius: 15px;
@@ -24,12 +59,14 @@ name: "Header.vue"
   text-align: center;
   grid-area: header;
 }
+
 .Navigatorul {
   list-style-type: none;
   text-align: left;
   padding-bottom: 2vh;
   margin-bottom: 0;
 }
+
 #Navigatorheader .Navigatorul .Navigatorli {
   display: inline;
   font-size: 20px;
