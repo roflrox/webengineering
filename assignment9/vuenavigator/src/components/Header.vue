@@ -21,7 +21,6 @@ export default {
   computed: mapState(['content']),
   watch: {
     content(newValue, oldValue) {
-      console.log(newValue)
 
 
       let result = []
@@ -35,10 +34,8 @@ export default {
   methods:{
     updateItems(input){
       this.items = input
-      console.log(this.items)
     },
     clicked(item) {
-      console.log(item.target.textContent);
       this.$store.dispatch('updateCurrent',item.target.textContent)
 
     }

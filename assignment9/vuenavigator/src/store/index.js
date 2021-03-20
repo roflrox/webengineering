@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     content: {},
-    current: ""
+    current: "",
+    currentHeader: "",
   },
   mutations: {},
   actions: {
@@ -22,8 +23,11 @@ export default new Vuex.Store({
     },
 
     updateCurrent({commit, state}, current) {
-      console.log("updateCurrent");
+
       state.current = current
+    },
+    updateCurrentHeader({commit, state}, current) {
+      state.currentHeader = current
     }
   },
   modules: {}
