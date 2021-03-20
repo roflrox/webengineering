@@ -1,3 +1,4 @@
 module.exports = {
-  lintOnSave: false
+  lintOnSave: false,
+  publicPath: '/~rkimme2s/assignment9-3-vuenavigator/'
 }
